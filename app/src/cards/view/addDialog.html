@@ -1,0 +1,20 @@
+<md-dialog ng-cloak>
+    <form name="cardForm">
+        <md-dialog-content>
+            <md-input-container class="md-block">
+                <label>Term</label>
+                <input ng-model="term" required />
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Definition</label>
+                <textarea ng-model="definition" md-maxlength="150" rows="5" md-select-on-focus required></textarea>
+            </md-input-container>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button ng-click="addCard()" ng-disabled="cardForm.$invalid">
+                Add Card
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
