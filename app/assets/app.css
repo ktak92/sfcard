@@ -6,6 +6,23 @@ html, body {
   padding: 0px;
 }
 
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
+md-dialog.md-dialog-fullscreen {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
 /* Toolbar area */
 
 .menu {
@@ -39,10 +56,6 @@ md-list-item > button {
 
 
 /* Primary content area */
-
-#content {
-  overflow: hidden;
-}
 
 #content  {
   padding-left: 40px;
@@ -128,4 +141,138 @@ span.name {
   font-weight: bold;
   font-size:1.1em;
   padding-left:5px;
+}
+
+md-dialog-content {
+    height: 100%;
+    width: 100%;
+}
+
+
+/**
+ * Flipcard styles and trasitions
+ */
+
+ #viewport {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     overflow: hidden;
+ }
+
+ #viewport li {
+     list-style: none;
+     position: absolute;
+     left: 0;
+     right: 0;
+     margin: 0 auto;
+ }
+
+.flip {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    margin: 10px;
+
+    -webkit-perspective: 800;
+    -ms-perspective: 800;
+    -moz-perspective: 800;
+    -o-perspective: 800;
+}
+
+.flip .card.flipped {
+    transform:rotatey(-180deg);
+    -ms-transform:rotatey(-180deg); /* IE 9 */
+    -moz-transform:rotatey(-180deg); /* Firefox */
+    -webkit-transform:rotatey(-180deg); /* Safari and Chrome */
+    -o-transform:rotatey(-180deg); /* Opera */
+}
+
+.flip .card {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2), 1px 1px 1px rgba(0, 0, 0, .2);
+    border: 10px solid #ECECEC;
+    box-sizing: border-box;
+    
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+    -moz-transform-style: preserve-3d;
+    -moz-transition: 0.5s;
+    -ms-transform-style: preserve-3d;
+    -ms-transition: 0.5s;
+    -o-transform-style: preserve-3d;
+    -o-transition: 0.5s;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+    
+
+
+    width: 100%;
+    height: 100%;
+    cursor: default;
+}
+
+.flip .card .face {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: #FFF;
+    z-index: 2;
+    backface-visibility: hidden;  /* W3C */
+    -webkit-backface-visibility: hidden; /* Safari & Chrome */
+    -moz-backface-visibility: hidden; /* Firefox */
+    -ms-backface-visibility: hidden; /* Internet Explorer */
+    -o-backface-visibility: hidden; /* Opera */
+}
+
+.flip .card .front {
+    z-index: 1;
+    position: absolute;
+}
+
+.flip .card .back {
+    transform:rotatey(-180deg);
+     -ms-transform:rotatey(-180deg); /* IE 9 */
+     -moz-transform:rotatey(-180deg); /* Firefox */
+     -webkit-transform:rotatey(-180deg); /* Safari and Chrome */
+     -o-transform:rotatey(-180deg); /* Opera */
+}
+
+.flip-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 3;
+}
+
+.flip .card .term {
+    font-size: 2em;
+}
+
+.flip .card .definition {
+    font-size: 1.2em;
+    margin: 0 15px;
+}
+
+
+.studyDialog .studyHint {
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+
+.select-all-item {
+    background: #EEE;
+}
+
+.empty-card-div {
+    border-top: 1px solid #EEE;
+    padding-top: 10px;
+    font-size: 1.2em;
+}
+
+.study-btn {
+    font-size: 1.5em;
+    margin-bottom: 20px;
 }

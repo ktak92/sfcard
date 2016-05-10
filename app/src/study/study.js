@@ -2,7 +2,7 @@
 angular
     .module('study', ['ngMaterial', 'cards', 'LocalStorageModule', 'gajus.swing'])
     .service('studyService', ['$rootScope', '$q', '$mdDialog', '$mdToast', 'localStorageService', studyService])
-    .controller('studyDialogController', ['$scope', '$mdDialog', '$mdToast', 'cardService', 'list', studyDialogController])
+    .controller('studyDialogController', ['$scope', '$mdDialog', '$mdToast', 'cardService', 'cardListsService', 'list', studyDialogController])
 
 function studyService($rootScope, $q, $mdDialog, $mdToast, localStorageService) {
     var self = this;
@@ -22,9 +22,17 @@ function studyService($rootScope, $q, $mdDialog, $mdToast, localStorageService) 
 }
 
 
-function studyDialogController($scope, $mdDialog, $mdToast, cardService, list) {
+function studyDialogController($scope, $mdDialog, $mdToast, cardService, cardListsService, list) {
+    $mdToast.show(
+        $mdToast.simple()
+        .textContent('Drag the cards to the Left or Right')
+        .position('top')
+        .hideDelay(5000)
+    );
     $scope.listName = list.name;
     $scope.cards = [];
+    $scope.wrongStack = [];
+    $scope.correctStack = [];
     angular.forEach(list.cards, function(term) {
         var definition = cardService.cards[term];
         if (definition) {
@@ -33,13 +41,17 @@ function studyDialogController($scope, $mdDialog, $mdToast, cardService, list) {
                 definition: definition
             });
         } else {
+            //sync the cards if the term definition doesn't exist
             cardService.remove(term);
-
         }
     });
 
-    $scope.flip = function() {
-        $scope.flip = true;
+    $scope.throwout = function(evName, evObj, card) {
+        if (evObj.throwDirection == -1) { //left
+            $scope.correctStack.push(card);
+        } else {
+            $scope.wrongStack.push(card);
+        }
     }
 
     $scope.hide = function() {

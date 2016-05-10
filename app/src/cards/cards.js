@@ -55,9 +55,10 @@ function cardService($q, $mdDialog, $mdToast, localStorageService) {
     };
 
     self.remove = function(term) {
-        var index = self.cards.indexOf(term);
-        if (index != -1) {
-            self.cards.splice(index, 1);
+        var found = self.cards[term];
+        debugger;
+        if (found) {
+            delete self.cards[term];
             self.save();
         }
     };

@@ -4,9 +4,9 @@ angular
     .service('cardListsService', ['$rootScope', '$q', '$mdDialog', '$mdToast', 'localStorageService', cardListsService])
 
 /**
- * [CardService description]
- * @param {[type]} $q                  [description]
- * @param {[type]} localStorageService [description]
+ * cardListsService
+ * Service that handles data for cardLists.
+ * Also handles dialogs related to cardLists.
  */
 function cardListsService($rootScope, $q, $mdDialog, $mdToast, localStorageService) {
     var self = this;
@@ -54,6 +54,21 @@ function cardListsService($rootScope, $q, $mdDialog, $mdToast, localStorageServi
         self.save();
         return newList;
     };
+
+    self.addCardToList = function(list, term) {
+        if (list.cards.indexOf(term) === -1) {
+            list.cards.push(term);
+            self.save();
+        }
+    }
+
+    self.removeCardFromList = function(list, term) {
+        var foundIndex = list.cards.indexOf(term);
+        if (foundIndex !== -1) {
+            list.cards.splice(foundIndex, 1);
+            self.save();
+        }
+    }
 
     self.showAddDialog = function(ev) {
         var confirm = $mdDialog.prompt()

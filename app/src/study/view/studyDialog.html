@@ -1,113 +1,31 @@
-<md-dialog>
+<md-dialog class="studyDialog">
     <md-toolbar>
         <div class="md-toolbar-tools">
             <md-button ng-click="cancel()" class="md-icon-button">
                 <md-icon md-svg-icon="close"></md-icon>
             </md-button>
             <h2 flex="flex">Study List: {{listName}}</h2>
+
         </div>
     </md-toolbar>
     <md-dialog-content>
-        <style>
-        
-    
-        #viewport {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        #viewport li {
-            list-style: none;
-        }
-        /*    
-        #viewport .stack {
-            width: 200px;
-            height: 300px;
-            background: #ED5D52;
-            position: absolute;
-            top: 100px;
-            left: 50%;
-            margin-left: -100px;
-            border-radius: 10px;
-        }
-        
-        #viewport li {
-            list-style: none;
-            background: #fff;
-            border-radius: 5px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            box-shadow: 0 0 2px rgba(0, 0, 0, .2), 1px 1px 1px rgba(0, 0, 0, .2);
-            text-align: center;
-            border: 10px solid #ECECEC;
-            box-sizing: border-box;
-            cursor: default;
-        }
-        */
-        /** flippppppp */
-        
-
-
-        .flip {
-            -webkit-perspective: 800;
-            position: relative;
-            width: 400px;
-            height: 250px;
-            margin: 10px;
-        }
-        
-        .flip .card.flipped {
-            -webkit-transform: rotatex(-180deg);
-        }
-        
-        .flip .card {
-            border: 1px solid #EEE;
-            -webkit-transform-style: preserve-3d;
-            -webkit-transition: 0.5s;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .flip .card .face {
-            position: absolute;
-            -webkit-backface-visibility: hidden;
-            z-index: 2;
-            text-align: center;
-        }
-        
-        .flip .card .front {
-            position: absolute;
-            z-index: 1;
-        }
-        
-        .flip .card .back {
-            -webkit-transform: rotatex(-180deg);
-        }
-
-        .flip-btn {
-            position: absolute;
-            right: 20px;
-            bottom: 20px;
-            z-index: 999;
-        }
-
-        </style>
+        <p layout layout-align="center" class="studyHint">
+            The idea is to drag the cards that you answered correctly to the Left and drag the card you've answer wrong to the Right.
+        </p>
         <div id="viewport">
-            <!--<ul class="stack" swing-stack>-->
-            <ul>
-                <!--<li swing-card ng-repeat="card in cards" class="flip active">-->
-                <li ng-repeat="card in cards" class="flip">
-                    <md-button class="flip-btn" ng-click="flipped = !flipped">
-                        <span>{{!flipped ? 'show': 'hide'}}</span>
-                    </md-button>
-                    <div class="card" layout-align="center center" layout-fill ng-class="{'flipped': flipped}">
-                        <div flex class="front face">
-                            <span>{{card.term}}</span>
+            <ul class="stack" swing-stack>
+                <li swing-card 
+                swing-on-throwout="throwout(eventName, eventObject, card)" 
+                ng-repeat="card in cards" class="flip active">
+                    <div class="card" ng-class="{'flipped': flipped}" md-whiteframe="3">
+                        <div class="front face" layout="column" layout-align="center center" layout-fill>
+                            <md-button class="flip-btn md-primary"  ng-click="flipped = !flipped">
+                                <span>{{!flipped ? 'show': 'hide'}}</span>
+                            </md-button>
+                            <span class="term">{{card.term}}</span>
                         </div>
-                        <div flex class="back face">
-                            <div>{{card.definition}}</div>
+                        <div class="back face" layout="column" layout-align="center center" layout-fill>
+                            <p class="definition">{{card.definition}}</p>
                         </div>
                     </div>
                 </li>

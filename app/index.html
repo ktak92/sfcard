@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Angular Material - Starter App</title>
+    <title>SF Cards Quick Study App</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
@@ -10,28 +10,6 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css" />
     <link rel="stylesheet" href="assets/app.css" />
-    <style type="text/css">
-    /**
-         * Hide when Angular is not yet loaded and initialized
-         */
-    
-    [ng\:cloak],
-    [ng-cloak],
-    [data-ng-cloak],
-    [x-ng-cloak],
-    .ng-cloak,
-    .x-ng-cloak {
-        display: none !important;
-    }
-    
-    md-dialog.fullscreen-dialog {
-        max-width: 100%;
-        max-height: 100%;
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-    }
-    </style>
 </head>
 
 <body ng-app="sfcardApp" layout="column" ng-controller="appController as ctrl" ng-cloak>
@@ -39,7 +17,7 @@
         <md-button class="menu" hide-gt-sm ng-click="ctrl.toggleSideBar('cardListsBar')" aria-label="Show User List">
             <md-icon md-svg-icon="menu"></md-icon>
         </md-button>
-        <h1>Angular Material - Starter App</h1>
+        <h1>SF Cards Quick Study App</h1>
     </md-toolbar>
     <div flex layout="row">
         <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" md-component-id="cardListsBar" class="md-whiteframe-z2">
@@ -53,26 +31,40 @@
                 </md-list-item>
             </md-list>
         </md-sidenav>
-        <md-content flex id="content">
-            <md-button ng-click="ctrl.startStudy()">Study!</md-button>
-            <h2>{{ctrl.selectedCardList.name}}</h2>
-            <pre>
-            {{ctrl.selectedCardList|json}}
-          </pre>
-            <md-button ng-click="ctrl.addCard()">
-                +add Card
-            </md-button>
-
-            <md-button ng-click="ctrl.removeList()">
-                remove list
-            </md-button>
-
-            <md-list>
-                <md-subheader class="md-no-sticky">Cards in this list</md-subheader>
-                <md-list-item ng-repeat="term in ctrl.selectedCardList.cards">
-                    <p> {{ term }} </p>
-                    <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+        <md-content flex id="content" layout-padding>
+            <div layout="row">
+                <h2>{{ctrl.selectedCardList.name}}</h2>
+                <md-button class="md-warn" ng-click="ctrl.removeList()">
+                    remove list
+                </md-button>
+            </div>
+            <div layout="column" ng-if="ctrl.selectedCardList.cards.length > 0">
+                <md-button class="study-btn md-raised md-primary" ng-click="ctrl.startStudy()">Study!</md-button>
+            </div>
+            <md-list md-whiteframe="1">
+                <div layout="row" layout-margin layout-align="space-between center">
+                    <span class="md-subheader">Cards in this list</span>
+                    <span>
+                    <md-button class="md-primary" ng-click="ctrl.addCard()">+Add Card</md-button>
+                  </span>
+                </div>
+                <md-list-item ng-if="ctrl.selectedCardList.cards.length > 0" class="select-all-item" layout="row" layout-margin layout-align="space-between center">
+                    <div flex>
+                        <md-checkbox ng-checked="ctrl.isChecked()" md-indeterminate="ctrl.isIndeterminate()" ng-click="ctrl.toggleAll()"></md-checkbox>
+                        <span ng-if="ctrl.isChecked()">Un-</span>Select All
+                    </div>
+                    <md-button flex class="md-warn" ng-if="ctrl.selectedCards.length > 0" ng-click="ctrl.removeCards()">
+                        remove cards
+                    </md-button>
                 </md-list-item>
+                <md-list-item ng-repeat="term in ctrl.selectedCardList.cards">
+                    <md-checkbox ng-checked="ctrl.exists(term, ctrl.selectedCards)" ng-click="ctrl.toggle(term, ctrl.selectedCards)"></md-checkbox>
+                    <p>{{term}}</p>
+                    <md-icon md-svg-icon="communication" ng-click="ctrl.quickDefinition(term)" aria-label="Open Chat" class="md-secondary md-hue-3"></md-icon>
+                </md-list-item>
+                <div class="empty-card-div" layout="row" layout-align="center center" ng-if="ctrl.selectedCardList.cards.length == 0">
+                    <span>There are no cards in this list yet</span>
+                </div>
             </md-list>
         </md-content>
     </div>
@@ -88,6 +80,7 @@
     <script src="./src/cardLists/cardLists.js"></script>
     <script src="./src/study/study.js"></script>
     <script src="./src/app.js"></script>
+    <script src="./src/theme.js"></script>
     <!-- app -->
 </body>
 
