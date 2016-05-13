@@ -1,15 +1,11 @@
 {
-  "name": "material-start",
+  "name": "sflashcards",
   "private": true,
-  "version": "0.0.4",
-  "description": "A starter project for AngularJS Material",
-  "repository": "https://github.com/angular/material-start",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/angular/material/blob/master/LICENSE"
-    }
-  ],
+  "version": "1.0",
+  "description": "A nifty flash card app",
+  "engines": {
+    "node": "4.1.1"
+  },
   "peerDependencies": {
     "angular": "@>=1.3 <1.6",
     "angular-animate": "^@>=1.3 <1.6",
