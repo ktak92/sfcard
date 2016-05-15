@@ -23,6 +23,10 @@ md-dialog.md-dialog-fullscreen {
     border-radius: 0;
 }
 
+md-icon svg {
+  fill: inherit;
+}
+
 /* Toolbar area */
 
 .menu {
@@ -90,6 +94,8 @@ md-button.menuBtn > md-icon {
   height:24px;
 }
 
+
+
 #content .md-button.share:active > md-icon {
   background-color: #dadada;
   border-radius: 75%;
@@ -102,6 +108,15 @@ md-button.menuBtn > md-icon {
   height: auto;
   max-width: 500px;
 }
+
+
+md-icon.avatar {
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  fill: #555;
+}
+
 
 /* Utils */
 
@@ -173,19 +188,11 @@ md-dialog-content {
     width: 400px;
     height: 250px;
     margin: 10px;
-
-    -webkit-perspective: 800;
-    -ms-perspective: 800;
-    -moz-perspective: 800;
-    -o-perspective: 800;
+    perspective: 800;
 }
 
 .flip .card.flipped {
     transform:rotatey(-180deg);
-    -ms-transform:rotatey(-180deg); /* IE 9 */
-    -moz-transform:rotatey(-180deg); /* Firefox */
-    -webkit-transform:rotatey(-180deg); /* Safari and Chrome */
-    -o-transform:rotatey(-180deg); /* Opera */
 }
 
 .flip .card {
@@ -194,20 +201,8 @@ md-dialog-content {
     box-shadow: 0 0 2px rgba(0, 0, 0, .2), 1px 1px 1px rgba(0, 0, 0, .2);
     border: 10px solid #ECECEC;
     box-sizing: border-box;
-    
-    -webkit-transform-style: preserve-3d;
-    -webkit-transition: 0.5s;
-    -moz-transform-style: preserve-3d;
-    -moz-transition: 0.5s;
-    -ms-transform-style: preserve-3d;
-    -ms-transition: 0.5s;
-    -o-transform-style: preserve-3d;
-    -o-transition: 0.5s;
     transform-style: preserve-3d;
     transition: 0.5s;
-    
-
-
     width: 100%;
     height: 100%;
     cursor: default;
@@ -215,35 +210,23 @@ md-dialog-content {
 
 .flip .card .face {
     position: absolute;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
     background: #FFF;
-    z-index: 2;
     backface-visibility: hidden;  /* W3C */
-    -webkit-backface-visibility: hidden; /* Safari & Chrome */
-    -moz-backface-visibility: hidden; /* Firefox */
-    -ms-backface-visibility: hidden; /* Internet Explorer */
-    -o-backface-visibility: hidden; /* Opera */
 }
 
 .flip .card .front {
-    z-index: 1;
     position: absolute;
 }
 
 .flip .card .back {
     transform:rotatey(-180deg);
-     -ms-transform:rotatey(-180deg); /* IE 9 */
-     -moz-transform:rotatey(-180deg); /* Firefox */
-     -webkit-transform:rotatey(-180deg); /* Safari and Chrome */
-     -o-transform:rotatey(-180deg); /* Opera */
 }
 
-.flip-btn {
+.stack .flip-btn {
     position: absolute;
     right: 20px;
     bottom: 20px;
-    z-index: 3;
+    background: #FFF;
 }
 
 .flip .card .term {
@@ -272,7 +255,22 @@ md-dialog-content {
     font-size: 1.2em;
 }
 
+.stack .card-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+}
+
 .study-btn {
     font-size: 1.5em;
     margin-bottom: 20px;
+}
+
+.stack .wrong .card {
+  border-color: red;
+}
+
+.stack .correct .card{
+  border-color: green;
 }

@@ -56,7 +56,6 @@ function cardService($q, $mdDialog, $mdToast, localStorageService) {
 
     self.remove = function(term) {
         var found = self.cards[term];
-        debugger;
         if (found) {
             delete self.cards[term];
             self.save();
