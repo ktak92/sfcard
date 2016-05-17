@@ -1,9 +1,10 @@
-html, body {
-  font-family: 'Roboto', sans-serif;
-  font-size:14px;
-  height:100%;
-  margin: 0px;
-  padding: 0px;
+html,
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 [ng\:cloak],
@@ -24,203 +25,187 @@ md-dialog.md-dialog-fullscreen {
 }
 
 md-icon svg {
-  fill: inherit;
+    fill: inherit;
 }
+
 
 /* Toolbar area */
 
 .menu {
-  background-color: transparent;
-  border: none;
-  height: 38px;
-  margin: 16px;
-  width: 36px;
+    background-color: transparent;
+    border: none;
+    height: 38px;
+    margin: 16px;
+    width: 36px;
 }
-
 
 md-toolbar h3 {
-  margin: auto;
-  font-weight: 500;
+    margin: auto;
+    font-weight: 500;
 }
+
 
 /* Sidenav area */
 
 md-list-item > button {
-  width:100%;
-  text-align:left !important;
+    width: 100%;
+    text-align: left !important;
 }
 
-  md-list .md-button.selected {
+md-list .md-button.selected {
     color: #03a9f4;
-  }
+}
 
-  md-sidenav  md-list {
+md-sidenav md-list {
     padding: 0px 0px 8px 0px;
-  }
+}
 
 
 /* Primary content area */
 
-#content  {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 5px;
-}
-
-#content .md-button.share {
-  background-color: transparent;
-  border: none;
-  width: 48px;
-  height: 48px;
-  margin: 8px auto 16px 0;
-  position: absolute;
-  top: 10px;
-  right: 25px;
+#content {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
 }
 
 #content md-icon.avatar {
-  margin-top: 10px;
-}
-
-#content .md-button.share > md-icon {
-  fill:black;
-  width:36px;
-  height:36px;
+    margin-top: 10px;
 }
 
 md-button.menuBtn > md-icon {
-  fill:white;
-  width:24px;
-  height:24px;
-}
-
-
-
-#content .md-button.share:active > md-icon {
-  background-color: #dadada;
-  border-radius: 75%;
-  padding:4px;
-  transition: all 100ms ease-out 30ms;
+    fill: white;
+    width: 24px;
+    height: 24px;
 }
 
 #content img {
-  display: block;
-  height: auto;
-  max-width: 500px;
+    display: block;
+    height: auto;
+    max-width: 500px;
 }
 
+#content .empty-card-div {
+    border-top: 1px solid #EEE;
+    padding-top: 10px;
+    font-size: 1.2em;
+}
+
+#content .study-btn {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#content .select-all-item {
+    background: #EEE;
+}
 
 md-icon.avatar {
-  width: 30px;
-  height: 30px;
-  padding: 10px;
-  fill: #555;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    fill: #555;
+    position: relative;
+    width: 128px;
+    height: 128px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0px;
+    vertical-align: middle;
+    zoom: 0.70;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
 }
-
-
-/* Utils */
 
 .content-wrapper {
-  position: relative;
+    position: relative;
 }
-
-/* Typography support coming in 0.8.0 */
 
 md-toolbar h1 {
-  font-size: 1.250em;
-  font-weight: 400;
-}
-
-.avatar {
-  position: relative;
-  width: 128px;
-  height: 128px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  margin: 0px;
-  vertical-align: middle;
-  zoom:0.70;
-  transform: translateZ(0);
-  -webkit-transform: scale(0.70);
-  -moz-transform:scale(0.70);
-}
-
-
-md-bottom-sheet  md-icon {
-  margin-right:20px;
-}
-
-span.name {
-  font-weight: bold;
-  font-size:1.1em;
-  padding-left:5px;
-}
-
-md-dialog-content {
-    height: 100%;
-    width: 100%;
+    font-size: 1.250em;
+    font-weight: 400;
 }
 
 
 /**
- * Flipcard styles and trasitions
+ * Study Dialog styles
  */
 
- #viewport {
-     position: relative;
-     width: 100%;
-     height: 100%;
-     overflow: hidden;
-     min-height: 500px;
- }
+#viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    min-height: 500px;
+}
 
- #viewport li {
-     list-style: none;
-     position: absolute;
-     left: 0;
-     right: 0;
-     margin: 0 auto;
- }
+#viewport li {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
 
 .flip {
     position: relative;
     width: 400px;
     height: 250px;
     margin: 10px;
-    perspective: 800;
+    perspective: 800px;
+    -webkit-perspective: 800px;
+    -o-perspective: 800px;
+    -moz-perspective: 800px;
 }
 
 .flip .card.flipped {
-    transform:rotatey(-180deg);
+    transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
 }
 
 .flip .card {
+    position: relative;
+    box-sizing: border-box;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 0 2px rgba(0, 0, 0, .2), 1px 1px 1px rgba(0, 0, 0, .2);
     border: 10px solid #ECECEC;
-    box-sizing: border-box;
-    transform-style: preserve-3d;
-    transition: 0.5s;
     width: 100%;
     height: 100%;
     cursor: default;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 1s;
+    -o-transform-style: preserve-3d;
+    -o-transition: -o-transform 1s;
+    -moz-transform-style: preserve-3d;
+    -moz-transition: -moz-transform 1s;
 }
 
 .flip .card .face {
     position: absolute;
     background: #FFF;
-    backface-visibility: hidden;  /* W3C */
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
 }
 
 .flip .card .front {
-    position: absolute;
+    transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
 }
 
 .flip .card .back {
-    transform:rotatey(-180deg);
+    transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 .stack .flip-btn {
@@ -230,48 +215,25 @@ md-dialog-content {
     background: #FFF;
 }
 
-.flip .card .term {
+.stack .flip .card .term {
     font-size: 2em;
 }
 
-.flip .card .definition {
+.stack .flip .card .definition {
     font-size: 1.2em;
     margin: 0 15px;
 }
 
-
-.studyDialog .studyHint {
-  font-size: 1.2em;
-  padding: 10px;
-}
-
-
-.select-all-item {
-    background: #EEE;
-}
-
-.empty-card-div {
-    border-top: 1px solid #EEE;
-    padding-top: 10px;
+.studyDialog .study-hint {
     font-size: 1.2em;
-}
-
-.stack .card-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #FFF;
-}
-
-.study-btn {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
 }
 
 .stack .wrong .card {
-  border-color: red;
+    border-color: red;
 }
 
-.stack .correct .card{
-  border-color: green;
+.stack .correct .card {
+    border-color: green;
 }

@@ -8,23 +8,21 @@
         </div>
     </md-toolbar>
     <md-dialog-content>
-        <p layout layout-align="center" class="studyHint">
+        <p layout layout-align="center" class="study-hint">
             The idea is to drag the cards that you answered correctly to the Left and drag the card you've answer wrong to the Right.
         </p>
         <div id="viewport">
-            <ul class="stack" swing-stack swing-options="options">
-                <li swing-card swing-on-throwout="throwout(eventName, eventObject, card)" swing-on-dragstart="dragStart(eventName, eventObject)" swing-on-dragend="dragEnd(eventName, eventObject)" ng-repeat="card in cards" class="flip" ng-class="{'last-card':$first}" ng-mouseover="clicked($event); $event.stopPropagation()">
-                    <div class="card-container">
-                        <div class="card" ng-class="{'flipped': flipped}" md-whiteframe="3">
-                            <div class="front face" layout="column" layout-align="center center" layout-fill>
-                                <span class="term">{{card.term}}</span>
-                                <md-button class="flip-btn md-primary" ng-click="flipped = !flipped">
-                                    <span>Flip</span>
-                                </md-button>
-                            </div>
-                            <div class="back face" layout="column" layout-align="center center" layout-fill>
-                                <p class="definition">{{card.definition}}</p>
-                            </div>
+            <ul class="stack" swing-stack>
+                <li swing-card swing-on-throwout="throwout(eventName, eventObject, card)" ng-repeat="card in cards" class="flip" ng-class="{'last-card':$first}">
+                    <div class="card" ng-class="{'flipped': flipped}" md-whiteframe="3">
+                        <div class="front face" layout="column" layout-align="center center" layout-fill>
+                            <span class="term">{{card.term}}</span>
+                            <md-button class="flip-btn md-primary" ng-click="flipped = !flipped">
+                                <span>Flip</span>
+                            </md-button>
+                        </div>
+                        <div class="back face" layout="column" layout-align="center center" layout-fill>
+                            <p class="definition">{{card.definition}}</p>
                         </div>
                     </div>
                 </li>

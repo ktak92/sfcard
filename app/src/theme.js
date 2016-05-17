@@ -1,13 +1,14 @@
 'use strict';
 
+/**
+    Configuration to override the theme color
+**/
+
 angular
     .module('sfcardApp')
     .config(themeConfig);
 
 
-/**
- * Class to override the theme colors
- */
 function themeConfig($mdThemingProvider, $mdIconProvider) {
     var customPrimary = {
         '50': '#60d2ff',

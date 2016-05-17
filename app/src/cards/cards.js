@@ -1,14 +1,14 @@
 'use strict';
+
+/**
+    Module for card related actions
+**/
+
 angular
     .module('cards', ['ngMaterial', 'LocalStorageModule'])
     .service('cardService', ['$q', '$mdDialog', '$mdToast', 'localStorageService', cardService])
     .controller('cardDialogController', ['$scope', '$mdDialog', '$mdToast', 'cardService', cardDialogController])
 
-/**
- * [CardService description]
- * @param {[type]} $q                  [description]
- * @param {[type]} localStorageService [description]
- */
 function cardService($q, $mdDialog, $mdToast, localStorageService) {
     var self = this;
 

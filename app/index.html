@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>SF Cards Quick Study App</title>
+    <title>Study with flash cards</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
@@ -17,7 +17,7 @@
         <md-button class="menu" hide-gt-sm ng-click="ctrl.toggleSideBar('cardListsBar')" aria-label="Show User List">
             <md-icon md-svg-icon="menu"></md-icon>
         </md-button>
-        <h1>SF Cards Quick Study App</h1>
+        <h1>SF Cards Quick Study</h1>
     </md-toolbar>
     <div flex layout="row">
         <md-sidenav id="list-bar" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="cardListsBar" class="md-whiteframe-z2">
@@ -31,7 +31,7 @@
                 </md-list-item>
             </md-list>
         </md-sidenav>
-        <md-content flex id="content" layout-padding>
+        <md-content flex id="content" layout-padding ng-show="ctrl.selectedCardList">
             <div layout="row">
                 <h2>{{ctrl.selectedCardList.name}}</h2>
                 <md-button class="md-warn" ng-click="ctrl.removeList()">
@@ -53,15 +53,15 @@
                 </div>
                 <md-list-item ng-if="ctrl.selectedCardList.cards.length > 0" class="select-all-item" layout="row" layout-margin layout-align="space-between center">
                     <div flex>
-                        <md-checkbox ng-checked="ctrl.isChecked()" md-indeterminate="ctrl.isIndeterminate()" ng-click="ctrl.toggleAll()"></md-checkbox>
-                        <span ng-if="ctrl.isChecked()">Un-</span>Select All
+                        <md-checkbox ng-checked="ctrl.isAllChecked()" md-indeterminate="ctrl.isIndeterminate()" ng-click="ctrl.toggleAll()"></md-checkbox>
+                        <span ng-if="ctrl.isAllChecked()">Un-</span>Select All
                     </div>
                     <md-button flex class="md-warn" ng-if="ctrl.selectedCards.length > 0" ng-click="ctrl.removeCards()">
                         remove cards
                     </md-button>
                 </md-list-item>
                 <md-list-item ng-repeat="term in ctrl.selectedCardList.cards">
-                    <md-checkbox ng-checked="ctrl.exists(term, ctrl.selectedCards)" ng-click="ctrl.toggle(term, ctrl.selectedCards)"></md-checkbox>
+                    <md-checkbox ng-checked="ctrl.isCardChecked(term, ctrl.selectedCards)" ng-click="ctrl.toggleCardCheckbox(term, ctrl.selectedCards)"></md-checkbox>
                     <p>{{term}}</p>
                     <md-icon md-svg-icon="communication" ng-click="ctrl.quickDefinition(term)" aria-label="Open Chat" class="md-secondary md-hue-3"></md-icon>
                 </md-list-item>

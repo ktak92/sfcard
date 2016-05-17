@@ -3698,7 +3698,9 @@ Card = function (stack, targetElement) {
     Card.appendToParent(targetElement);
 
     targetElement.addEventListener('mousedown', function () {
-        Card.appendToParent(targetElement);
+        
+        //removed this line because you have to click into the element first to "activate" it
+        //Card.appendToParent(targetElement);
 
         eventEmitter.trigger('dragstart', {
             target: targetElement
@@ -3711,18 +3713,17 @@ Card = function (stack, targetElement) {
             r = config.rotation(x, y, targetElementWidth, targetElementHeight, config.maxRotation);
 
         Card.transform(targetElement, x, y, r);
-
         eventEmitter.trigger('dragmove', {
             target: targetElement,
             throwOutConfidence: Card.throwOutConfidence(x, targetElementWidth),
             throwDirection: x < 0 ? Card.DIRECTION_LEFT : Card.DIRECTION_RIGHT
         });
     });
-
     mc.on('panend', function(e) {
         var x = lastTranslate.x + e.deltaX,
             y = lastTranslate.y + e.deltaY;
 
+        Card.appendToParent(targetElement);
         if (config.isThrowOut(x, targetElementWidth)) {
             card.throwOut(x, y);
         } else {
@@ -3916,7 +3917,8 @@ Card.appendToParent = function (element) {
  * @return {Number}
  */
 Card.throwOutConfidence = function (offset, elementWidth) {
-    return Math.min(Math.abs(offset) / elementWidth, 1);
+    // There's a bug here for chrome , elementWidth is zero on certain modifications of the element
+    return Math.min(Math.abs(offset) / elementWidth, 0.25);
 };
 
 /**
@@ -3929,7 +3931,7 @@ Card.throwOutConfidence = function (offset, elementWidth) {
  * @return {Boolean}
  */
 Card.isThrowOut = function (offset, elementWidth) {
-    return Card.throwOutConfidence(offset, elementWidth) == 1;
+    return Card.throwOutConfidence(offset, elementWidth) == 0.25;
 };
 
 /**
@@ -4058,12 +4060,12 @@ angular
     .directive('swingStack', function () {
         return {
             restrict: 'A',
-            scope: {},
-            controller: function () {
+            scope: {
+                config: '=swingOptions'
+            },
+            controller: function ($scope) {
                 var stack;
-
-                stack = Swing.Stack();
-
+                stack = Swing.Stack($scope.config);
                 this.add = function (cardElement) {
                     return stack.createCard(cardElement);
                 };
