@@ -202,7 +202,7 @@ function AppController($mdSidenav, $mdDialog, $mdToast, cardListsService, cardSe
         then(function() {
             if (self.clService.cardLists.length) {
                 self.selectedCardList = self.clService.cardLists[0];
-                self.startStudy();
+                //self.startStudy();
             } else {
                 self.seed();
             }
