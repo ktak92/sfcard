@@ -51,7 +51,7 @@
                     <md-button class="md-primary" ng-click="ctrl.addCard()">+Add Card</md-button>
                   </span>
                 </div>
-                <div ng-if="ctrl.selectedCardList.cards.length > 0" class="select-all-item" layout="column" layout-sm="row" layout-margin layout-align="center center">
+                <div ng-if="ctrl.selectedCardList.cards.length > 0" class="select-all-item" layout-gt-sm="row" layout-margin layout-align="center center">
                     <div flex="66">
                         <md-checkbox ng-checked="ctrl.isAllChecked()" md-indeterminate="ctrl.isIndeterminate()" ng-click="ctrl.toggleAll()"></md-checkbox>
                         <span ng-if="ctrl.isAllChecked()">Un-</span>Select All

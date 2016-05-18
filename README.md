@@ -3,7 +3,7 @@ A basic flash card app used for studying terms and definitions.
 
 # Frameworks:
 - Angular
-- Angular Material
+- Angular Material (forked off of https://github.com/angular/material-start)
 - Swing.js
 
 # Initial Data:
