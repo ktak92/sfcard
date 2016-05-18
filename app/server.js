@@ -1,5 +1,3 @@
-use 'strict';
-
 /**
     Barebone script for starting a express server
 **/
