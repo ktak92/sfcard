@@ -51,15 +51,17 @@
                     <md-button class="md-primary" ng-click="ctrl.addCard()">+Add Card</md-button>
                   </span>
                 </div>
-                <md-list-item ng-if="ctrl.selectedCardList.cards.length > 0" class="select-all-item" layout="row" layout-margin layout-align="space-between center">
-                    <div flex>
+                <div ng-if="ctrl.selectedCardList.cards.length > 0" class="select-all-item" layout="column" layout-sm="row" layout-margin layout-align="center center">
+                    <div flex="66">
                         <md-checkbox ng-checked="ctrl.isAllChecked()" md-indeterminate="ctrl.isIndeterminate()" ng-click="ctrl.toggleAll()"></md-checkbox>
                         <span ng-if="ctrl.isAllChecked()">Un-</span>Select All
                     </div>
-                    <md-button flex class="md-warn" ng-if="ctrl.selectedCards.length > 0" ng-click="ctrl.removeCards()">
-                        remove cards
-                    </md-button>
-                </md-list-item>
+                    <div flex="33" layout-align="left center">
+                        <md-button class="md-warn" ng-if="ctrl.selectedCards.length > 0" ng-click="ctrl.removeCards()">
+                            remove cards
+                        </md-button>
+                    </div>
+                </div>
                 <md-list-item ng-repeat="term in ctrl.selectedCardList.cards">
                     <md-checkbox ng-checked="ctrl.isCardChecked(term, ctrl.selectedCards)" ng-click="ctrl.toggleCardCheckbox(term, ctrl.selectedCards)"></md-checkbox>
                     <p>{{term}}</p>

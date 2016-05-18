@@ -100,6 +100,10 @@ md-button.menuBtn > md-icon {
     background: #EEE;
 }
 
+#content .select-all-item md-checkbox {
+    margin: 10px;
+}
+
 md-icon.avatar {
     width: 30px;
     height: 30px;
