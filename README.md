@@ -19,6 +19,8 @@ A basic flash card app used for studying terms and definitions.
 
 # Live Demo
 `https://sfcards.heroku.com`
+or if the dyno is sleeping
+`https://sfcard-ktak.c9users.io/`
 
 # Tested on:
     Chrome, FF, iOS6
